@@ -1,14 +1,13 @@
 // ==UserScript==
-// @name         Slither.io bot [AlpHyx]
+// @name         slither.io bot
 // @namespace    http://slither.io/
 // @version      1.3.2
-// @description  Auto-Bot
-// @author       AlpHyx
+// @author       AnonHexo
 // @match        http://slither.io/
 // @grant        none
 // ==/UserScript==
 
-const TARGET_FPS = 60;
+const TARGET_FPS = 100;
 
 window.log = function() {
     if (window.logDebugging) {
@@ -188,7 +187,7 @@ var canvas = window.canvas = (function() {
         },
 
         drawAngle: function(start, angle, color, fill, alpha) {
-            if (alpha === undefined) alpha = 0.6;
+            if (alpha === undefined) alpha = 0.5;
 
             var context = window.mc.getContext('2d');
 
@@ -1034,7 +1033,7 @@ var userInterface = window.userInterface = (function() {
             var oContent = [];
             var ht = userInterface.handleTextColor;
 
-            oContent.push('[AlpHyx] Menu v ' + GM_info.script.version);
+            oContent.push('[AnonHexo] Menu v( ' + GM_info.script.version + ' )');
             oContent.push('[T] Auto-Bot: ' + ht(bot.isBotEnabled));
             oContent.push('[C] Collision Detection: ' + ht(window.collisionDetection));
             oContent.push('[O] Mobile Rendering: ' + ht(window.mobileRender));
@@ -1054,7 +1053,7 @@ var userInterface = window.userInterface = (function() {
             var oContent = [];
 
             if (window.playing && window.snake !== null) {
-                oContent.push('FPS: ' + userInterface.framesPerSecond.fps);
+                oContent.push('FramePerSeconds: ' + userInterface.framesPerSecond.fps);
 
                 oContent.push('X: ' +
                     (Math.round(window.snake.xx) || 0) + ' Y: ' +
@@ -1065,7 +1064,7 @@ var userInterface = window.userInterface = (function() {
                     oContent.push('X: ' + window.goalCoordinates.x + ' Y: ' +
                         window.goalCoordinates.y);
                     if (window.goalCoordinates.sz) {
-                        oContent.push('Size: ' + window.goalCoordinates.sz);
+                        oContent.push('Target Size: ' + window.goalCoordinates.sz);
                     }
                 }
 
@@ -1171,10 +1170,10 @@ var userInterface = window.userInterface = (function() {
             stmenu.style.textAlign = "center";
             stmenu.style.margin = "0 auto 100px auto";
             stmenu.style.padding = "0 14px";
-            stmenu.innerHTML = "[AlpHyx] Auto-Bot <a style='color:#8058D0;' target='_blank' href='https://github.com/AlpHyx'>GitHub</a>";
+            stmenu.innerHTML = "[AnonHexo] Mod Menu <a style='color:#8058D0;' target='_blank' href='https://github.com/AnonHexo'>GitHub</a>";
             login.appendChild(stmenu);
             stmenu.appendChild(div);
-			stmenu.innerHTML += '<a href="https://github.com/AlpHyx" target="_blank" style="color:#00cbea;opacity:2;text-decoration:none;">Download Updates</a> | <a href="https://github.com/AlpHyx" target="_blank" style="color:#85f9ae;opacity:2;text-decoration:none;">Other Cheats</a>';
+			stmenu.innerHTML += '<a href="https://github.com/AnonHexo" target="_blank" style="color:#85f9ae;opacity:2;text-decoration:none;">More Cheats Here</a>';
     }
 	}
 	setMenu();
@@ -1191,12 +1190,12 @@ var userInterface = window.userInterface = (function() {
     userInterface.initOverlays();
 
     userInterface.loadPreference('logDebugging', false);
-    userInterface.loadPreference('visualDebugging', false);
+    userInterface.loadPreference('visualDebugging', true);
     userInterface.loadPreference('autoRespawn', false);
-    userInterface.loadPreference('mobileRender', false);
+    userInterface.loadPreference('mobileRender', true);
     userInterface.loadPreference('collisionDetection', true);
     userInterface.loadPreference('collisionRadiusMultiplier', 10);
-    window.nick.value = userInterface.loadPreference('savedNick', 'AlpHyx');
+    window.nick.value = userInterface.loadPreference('savedNick', 'AnonHexo');
 
     document.body.addEventListener('mousewheel', canvas.setZoom);
     document.body.addEventListener('DOMMouseScroll', canvas.setZoom);
